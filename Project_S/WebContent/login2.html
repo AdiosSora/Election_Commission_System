@@ -1,0 +1,95 @@
+<!DOCTYPE>
+<html lang="ja">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <title>ログイン - ネット投票所</title>
+</head>
+<body class="fadeout">
+    <div class="row">
+        <div class="relative" id="#bg01">
+            <video playsinline autoplay muted loop source src="image/walking.mp4" type="video/mp4"></video>
+        </div>
+        <div class="relative_next">
+            <div class="row bg_town">
+                <div class="col-sm"></div>
+                <div class="col-6">
+                    <br /><br />
+                    <div id="login_infomation">
+                    	<div class="alert alert-danger" role="alert">
+                    	IDとパスワードが間違えています。
+                    	</div>
+                    </div>
+                    <div class="card" style="padding:1em;">
+                        <form method="POST" name="login_form" action="Auth.jsp" >
+                            <fieldset>
+                                <div class="form-group">
+                                    <h2>ログイン認証</h2>
+                                    <label for="exampleInputEmail1">ID</label>
+                                    <div class="col-xs-5">
+                                        <input type="text" class="form-control" id="InputID" name="userID" placeholder="IDを入力してください。">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>パスワード</label>
+                                    <div class="col-xs-5">
+                                        <input type="password" class="form-control" id="InputPassword" name="password" placeholder="パスワードを入力してください。">
+                                        <div class="form-check">
+                                        <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" id="password-check">
+                                        パスワードを表示する。
+                                        </label>
+                                        </div>
+                                    </div>
+                                    <script>
+                                    const pwd = document.getElementById('InputPassword');
+                                    const pwdCheck = document.getElementById('password-check');
+                                    pwdCheck.addEventListener('change', function() {
+                                        if(pwdCheck.checked) {
+                                            pwd.setAttribute('type', 'text');
+                                            } else {
+                                                pwd.setAttribute('type', 'password');
+                                                }
+                                        }, false);
+                                    </script>
+                                </div>
+                                <input type="hidden" name="login" value="ログイン">
+                                <a class="btn btn-primary" href="javascript:login_form.submit()">ログイン</a>
+                            </fieldset>
+                        </form>
+                    </div>
+                 </div>
+            	<div class="col-sm"></div>
+            </div>
+            <br />
+            <a href="index.html" class="btn btn-secondary btn-sm">トップページへ戻る</a>
+        </div>
+	</div>
+</body>
+<script>
+$(window).on('load', function(){
+    $('body').removeClass('fadeout');
+});
+$(function() {
+  // ハッシュリンク(#)と別ウィンドウでページを開く場合はスルー
+  $('a:not([href^="#"]):not([target])').on('click', function(e){
+    e.preventDefault(); // ナビゲートをキャンセル
+    url = $(this).attr('href'); // 遷移先のURLを取得
+    if (url !== '') {
+      $('body').addClass('fadeout');  // bodyに class="fadeout"を挿入
+      setTimeout(function(){
+        window.location = url;  // 0.8秒後に取得したURLに遷移
+      }, 800);
+    }
+    return false;
+  });
+});
+</script>
+</html>

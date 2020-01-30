@@ -1,0 +1,47 @@
+body {
+	background-color:transparent !Important;
+}
+input[type=radio] {
+display: none; /* ラジオボタンを非表示にする */
+}
+.label_vote {
+	display: block; /* ブロックレベル要素化する */
+	float: left; /* 要素の左寄せ・回り込を指定する */
+	margin: 5px; /* ボックス外側の余白を指定する */
+	width: 100%; /* ボックスの横幅を指定する */
+	height: auto; /* ボックスの高さを指定する */
+	padding-left: 5px; /* ボックス内左側の余白を指定する */
+	padding-right: 5px; /* ボックス内御右側の余白を指定する */
+	color: #333333; /* フォントの色を指定 */
+	line-height: 45px; /* 行の高さを指定する */
+	cursor: pointer; /* マウスカーソルの形（リンクカーソル）を指定する */
+	background: #fff;
+	border:solid 1px #cccccc;
+	filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.3));
+}
+input[type="radio"]:checked + label {
+background: #31A9EE;/* マウス選択時の背景色を指定する */
+color: #ffffff; /* マウス選択時のフォント色を指定する */
+}
+.label_vote:hover {
+background-color: #E2EDF9; /* マウスオーバー時の背景色を指定する */
+}
+
+.js-animation {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(40px);
+  transition: all 1s;
+}
+.js-animation.is-show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0px);
+}
+label > img {
+	background:#eeeeee;
+	margin: 10px 0;
+}
+.candidate_name {
+	font-size :38px;
+}
