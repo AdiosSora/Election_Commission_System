@@ -105,7 +105,7 @@
 		if(flag){//idとpasswordが一致した場合
 			if(ParameterBox.getvoteflag().equals("X-XX")){//投票がまだの場合
 				%><script>	location.href = "vote.jsp";</script><%//投票用のページに移行
-			}else if(ParameterBox.getvoteflag().equals(null)) {//投票済みの場合
+			}else if(ParameterBox.getvoteflag().equals("0")) {//投票済みの場合
 				%> <script>
 						location.href = "login3.html";
 					</script><%

@@ -4,6 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+  <title>投票確認ページ - ネット投票所</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<link href="css/animate.css" rel="stylesheet">
 
 <%  //SQL接続オブジェクト
 
@@ -51,20 +56,29 @@ ParameterBox.setVoteFlag_Decision(candidateid);
 %>
 <title></title>
 </head>
-<body>
-<div>
+<body class="fadeout">
 <form action="vote_complete.jsp">
-
-お住いの地区 : <%=ParameterBox.getDistrictName() %><br><br>
-
-名前　：　<%= ParameterBox.getnickname() %> 様<br><br>
-
-投票される立候補者名 ：<%=candidate_name %><br><br>
-
-この方に投票してもよろしいですか？<br><br>
-<input type="hidden" name="candidate_name" value="<%= ParameterBox.getvoteflag() %>">
-<input type = "submit" name ="candidate_button" value="投票する">
-<button type="button" onclick="history.back()">戻る</button>
+    <div class="vote_template animated infinite zoomInDown">
+        <div class="vertical">
+            <div id="view_time"></div>
+            <h1 style="font-size: 36px">第二千二十回　福岡市長選挙</h1>
+            <br>
+             <h3><%=ParameterBox.getDistrictName() %>　<%= ParameterBox.getnickname() %> 様</h3>
+             <br>
+             <h2>候補者名</h2>
+             <br>
+             <h2><%=candidate_name %></h2>
+             <br><br>
+        </div>
+        <input type="hidden" name="candidate_name" value="<%= ParameterBox.getvoteflag() %>">
+    </div>
+    <div class ="center_button">
+    	この方に投票してもよろしいですか？<br><br>
+        <button type="button" class="btn btn-secondary"onclick="history.back()">戻る</button>
+        <input type="hidden" name="candidate_id_value" value="<%= candidateid%>">
+        <input type="hidden" name="candidate_name_value" value="<%= candidate_name%>">
+        <input type = "submit" class="btn btn-primary" name ="candidate_button" value="投票する">
+    </div>
 </form>
 
 <%	ps.close();
@@ -75,3 +89,71 @@ ParameterBox.setVoteFlag_Decision(candidateid);
 </div>
 </body>
 </html>
+<style>
+    .vote_template {
+        border: 1px solid #777;
+        width:auto;
+        text-align: center;
+        margin : 5vw 10%;
+        background-color: white;
+        box-shadow: 4px 4px 6px gray;
+    }
+    #view_time {
+        margin: 20px 30px 0 0;
+        text-align: right;
+    }
+    .center_button {
+        text-align: center;
+    }
+</style>
+<script type="text/javascript">
+$(window).on('load', function(){
+    $('body').removeClass('fadeout');
+});
+$(function() {
+  // ハッシュリンク(#)と別ウィンドウでページを開く場合はスルー
+  $('a:not([href^="#"]):not([target])').on('click', function(e){
+    e.preventDefault(); // ナビゲートをキャンセル
+    url = $(this).attr('href'); // 遷移先のURLを取得
+    if (url !== '') {
+      $('body').addClass('fadeout');  // bodyに class="fadeout"を挿入
+      setTimeout(function(){
+        window.location = url;  // 0.8秒後に取得したURLに遷移
+      }, 800);
+    }
+    return false;
+  });
+});
+function showElementAnimation() {
+
+	  var element = document.getElementsByClassName('js-animation');
+	  if(!element) return; // 要素がなかったら処理をキャンセル
+
+	  var showTiming = window.innerHeight > 768 ? 200 : 40; // 要素が出てくるタイミングはここで調整
+	  var scrollY = window.pageYOffset;
+	  var windowH = window.innerHeight;
+
+	  for(var i=0;i<element.length;i++) { var elemClientRect = element[i].getBoundingClientRect(); var elemY = scrollY + elemClientRect.top; if(scrollY + windowH - showTiming > elemY) {
+	      element[i].classList.add('is-show');
+	    } else if(scrollY + windowH < elemY) {
+	      // 上にスクロールして再度非表示にする場合はこちらを記述
+	      element[i].classList.remove('is-show');
+	    }
+	  }
+	}
+	showElementAnimation();
+
+
+document.getElementById("view_time").innerHTML = getNow();
+
+function getNow() {
+	var now = new Date();
+	var year = now.getFullYear();
+	var mon = now.getMonth()+1; //１を足すこと
+	var day = now.getDate();
+
+	//出力用
+	var s = year + "年" + mon + "月" + day + "日";
+	return s;
+}
+</script>

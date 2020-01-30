@@ -29,6 +29,7 @@
 	<br />
 	<div class="page-header animated infinite fadeInLeft">
 	    <h1 class="vote_titlebar animated infinite zoomInDown"> <%= ParameterBox.getDistrictName() %>　 <%= ParameterBox.getnickname() %> 様</h1>
+		<h2 class="vote_titlebar animated infinite zoomInDown">　第2020回　福岡市長選挙 </h2>
 	</div>
 	<br />
 	<div class="row">
@@ -84,7 +85,6 @@
 					</div>
 			<br>
 			</div>
-			   <input type="hidden" name="candidate" value="確認する">
 			</form>
 		</div>
 		<div class="col-sm"></div>

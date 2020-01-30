@@ -50,19 +50,63 @@ body.fadeout::after {
 	    transform: translateY(0);}
 	}
 }
-
-video {
-  position: absolute;
-  top: -5;
-  left: -5;
-  width: 101vw;
-  height: auto;
-  background-size: cover;
-  z-index: -2;
-  &--filter {
-    filter: drop-shadow(0px 0px #000);
-  }
+@media screen and (orientation: landscape) {
+	video {
+	  position: absolute;
+	  top: -5;
+	  left: -5;
+	  width: 101vw;
+	  height: auto;
+	  background-size: cover;
+	  z-index: -2;
+	  &--filter {
+	    filter: drop-shadow(0px 0px #000);
+	  }
+	}
 }
+@media screen and (orientation: portrait) {
+	video {
+	  position: absolute;
+	  top: -5;
+	  left: -5;
+	  width: auto;
+	  height: 100vw;
+	  background-size: cover;
+	  z-index: -2;
+	  &--filter {
+	    filter: drop-shadow(0px 0px #000);
+	  }
+	}
+}
+@media screen and (orientation: landscape) {
+	video.login {
+	  position: absolute;
+	  top: -5;
+	  left: -5;
+	  width: 101vw;
+	  height: auto;
+	  background-size: cover;
+	  z-index: -2;
+	  &--filter {
+	    filter: drop-shadow(0px 0px #000);
+	  }
+	}
+}
+@media screen and (orientation: portrait) {
+	video.login {
+	  position: absolute;
+	  top: -5;
+	  left: -5;
+	  width: auto;
+	  height: 100%;
+	  background-size: cover;
+	  z-index: -2;
+	  &--filter {
+	    filter: drop-shadow(0px 0px #000);
+	  }
+	}
+}
+
 .relative::before {
     background-color: rgba( 255, 255, 255, .7 );
     content: "";
@@ -94,7 +138,7 @@ video {
 /* トップページ */
 
 .row_top {
-    margin : 15% 0;
+    padding : 15% 0;
 }
 @media (max-width: 800px) {
 	.titlesub_text{
