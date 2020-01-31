@@ -40,31 +40,38 @@ ParameterBox.setVoteFlag_Decision(candidateid);
     <div class="body_scale">
         <div class="vertical">
             <div id="view_time"></div>
-            <h1 style="font-size: 36px">第二千二十回　福岡市長選挙</h1>
+            <h1 style="font-size: 36px">第2020回　福岡市長選挙</h1>
             <br>
              <h3><%=ParameterBox.getDistrictName() %>　<%= ParameterBox.getnickname() %> 様</h3>
              <br>
              <h2>候補者名</h2>
              <br>
-             <h2><%= request.getParameter("candidate_name_value")%></h2>
+             <h1><%= request.getParameter("candidate_name_value")%></h1>
              <br><br>
         </div>
         <input type="hidden" name="candidate_name" value="<%= ParameterBox.getvoteflag() %>">
     </div>
     <div class="vote_gif">
     	<img src="image/Vote_anm.gif"width="100%" alt="">
-
     </div>
-
 
 <%
 	ps.close();
 	conn.close();
 %>
 </body>
+<div class="vote_thx_gif">
+    	ご投票ありがとうございました
+</div>
+    <div class="vote_thx_button">
+    	<a href="index.html" class="btn btn-secondary">トップページに戻る</a>
+    </div>
+
 <style>
 	body {
 		position: relative;
+		top:0%;
+		background-color:#fefefe;
 	}
     .body_scale{
         animation-name: Body_small;
@@ -80,15 +87,42 @@ ParameterBox.setVoteFlag_Decision(candidateid);
     #view_time {
         margin: 20px 30px 0 0;
         text-align: right;
+        background-color :#ffffff;
+        z-index :2;
     }
     .vote_gif{
     	position: absolute;
     	animation-name: Vote_gif;
         animation-duration: 20s;
         animation-fill-mode: forwards;
-        right: 0px;
-    	bottom: 0px;
+        top: -25vw;
     	width:100vw;
+    	text-aligen:center;
+    	z-index:-1;
+
+    }
+    .vote_thx_gif{
+    	position: absolute;
+    	animation-name: Vote_thx_gif;
+        animation-duration: 10s;
+        animation-fill-mode: forwards;
+        top: 30%;
+        left: 20%;
+    	width:100vw;
+    	text-aligen:center;
+    	z-index:1;
+    	font-size :50px;
+    }
+      .vote_thx_button{
+    	position: absolute;
+    	animation-name: Vote_thx_gif;
+        animation-duration: 10s;
+        animation-fill-mode: forwards;
+        top: 120%;
+        left: 48%;
+    	text-aligen:center;
+    	z-index:1;
+    	font-size :50px;
     }
 @keyframes Body_small{
 	0% {
@@ -113,6 +147,17 @@ ParameterBox.setVoteFlag_Decision(candidateid);
 		opacity: 0;
 	}
     50% {
+    	opacity: 1;
+    }
+}
+@keyframes Vote_thx_gif{
+	0% {
+		opacity: 0;
+	}
+	80%{
+		opacity: 0;
+	}
+    90% {
     	opacity: 1;
     }
 }

@@ -58,16 +58,16 @@ ParameterBox.setVoteFlag_Decision(candidateid);
 </head>
 <body class="fadeout">
 <form action="vote_complete.jsp">
-    <div class="vote_template animated infinite zoomInDown">
+    <div class="vote_template">
         <div class="vertical">
             <div id="view_time"></div>
-            <h1 style="font-size: 36px">第二千二十回　福岡市長選挙</h1>
+            <h1 style="font-size: 36px">第2020回　福岡市長選挙</h1>
             <br>
              <h3><%=ParameterBox.getDistrictName() %>　<%= ParameterBox.getnickname() %> 様</h3>
              <br>
              <h2>候補者名</h2>
              <br>
-             <h2><%=candidate_name %></h2>
+             <h1><%=candidate_name %></h1>
              <br><br>
         </div>
         <input type="hidden" name="candidate_name" value="<%= ParameterBox.getvoteflag() %>">
