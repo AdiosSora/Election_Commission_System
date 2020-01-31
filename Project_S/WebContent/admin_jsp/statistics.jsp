@@ -7,6 +7,12 @@
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<!-- Load c3.css -->
+<link href="../css/c3-0.7.10/c3.css" rel="stylesheet">
+
+<!-- Load d3.js and c3.js -->
+<script src="../css/c3-0.7.10/d3.v5.min.js" charset="utf-8"></script>
+<script src="../css/c3-0.7.10/c3.min.js"></script>
 
 <%
 // 受信したデータのエンコーディング(UTF-8)
@@ -54,80 +60,16 @@ rs = ps.executeQuery();
 	 <a class="" href="statistics.jsp">投票統計</a>
 </div>
 <div class="col-6">
-	<h2 style="border-bottom: 1px solid #eee;"><%
-	//選択された１つのデータを取得
-	if(rs.next()){
-		out.println(rs.getString("DistrictName") + "の集計");	// 「senkyokuNAME」を変更
-	}%></h2><%
-	// 投票結果を取得,該当するテーブル、列に変更
-	ps = conn.prepareStatement(
-			"select CandidateName as '候補者' , count(VoteFlag) as '獲得投票数', " +
-			"round((count(VoteFlag) / (select count(*) from user where ConstituencyID=?))*100, 1) as '投票率' " +
-			"from user u join Candidate can " +
-			"on VoteFlag = CandidateID " +
-			"where u.ConstituencyID=? " +
-			"group by VoteFlag " +
-			"order by 獲得投票数 desc ;");
-	ps.setString(1, selectID);
-	ps.setString(2, selectID);
 
-	//SQL文の実行
-	rs_Main = ps.executeQuery();
-
-	// 該当者なし、未投票を集計
-	ps = conn.prepareStatement(
-			"select voteflag, count(voteflag), " +
-			"round((count(VoteFlag) / (select count(*) from user where ConstituencyID=?))*100, 1) as '投票率' " +
-			"from user " +
-			"where (voteflag='0' or voteflag='X-XX' ) " +
-			"and ConstituencyID=? " +
-			"group by voteflag " +
-			"order by voteflag ;");
-	ps.setString(1, selectID);
-	ps.setString(2, selectID);
-
-	//SQL文の実行
-	rs_Sub = ps.executeQuery();
-
-	// カウント変数
-	int i = 0;
-	%>
-<div class="page-header">
-	<h2 style="border-bottom: 1px solid #eee;">選挙統計</h2>
-	<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
-</div>
+	<div class="page-header">
+		<h2 style="border-bottom: 1px solid #eee;">選挙統計</h2>
+		<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+	</div>
 </div>
 <div class="col-2"></div>
 </div>
 </body>
 </html>
-<script>
-window.onload = function() {
-
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	title: {
-		text: "Desktop Search Engine Market Share - 2016"
-	},
-	data: [{
-		type: "pie",
-		startAngle: 240,
-		yValueFormatString: "##0.00'%'",
-		indexLabel: "{label} {y}",
-		dataPoints: [
-			<% while(rs_Main.next()){ %>
-			{y: <%=rs_Main.getString("投票率") %>, label: <%=rs_Main.getString("候補者") %>},
-					<%
-					i++;
-					%>
-				<% } %>
-		]
-	}]
-});
-chart.render();
-
-}
-</script>
 <%
 
 //ResultSetを閉じる

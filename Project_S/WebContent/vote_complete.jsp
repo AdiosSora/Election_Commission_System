@@ -107,11 +107,11 @@ ParameterBox.setVoteFlag_Decision(candidateid);
         animation-duration: 10s;
         animation-fill-mode: forwards;
         top: 30%;
-        left: 20%;
-    	width:100vw;
+        left: 30%;
+    	width:100%;
     	text-aligen:center;
     	z-index:1;
-    	font-size :50px;
+    	font-size :3vw;
     }
       .vote_thx_button{
     	position: absolute;
