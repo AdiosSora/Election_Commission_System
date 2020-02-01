@@ -226,3 +226,10 @@ a.cp_btn:hover {
 	width:auto;
 	height:auto;
 }
+
+/* 管理者画面 */
+.admin_sidebar{
+	background-color:#fdfdfd;
+	text-align:center;
+	padding:100px 0px 0px 0px;
+}
