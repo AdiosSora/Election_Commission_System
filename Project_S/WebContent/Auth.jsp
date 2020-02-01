@@ -41,11 +41,8 @@
 
 
 
-	PreparedStatement ps = conn.prepareStatement("SELECT ID from user");
-	ResultSet rs;  //UserID認証用データ
-
-	PreparedStatement ps2 = conn.prepareStatement("SELECT password from user");
-	ResultSet rs2; //Password認証用データ
+	PreparedStatement ps = conn.prepareStatement("SELECT ID,password from user");
+	ResultSet rs;  //UserIDとPassword認証用データ
 
 	PreparedStatement ps3 = conn.prepareStatement("SELECT VoteFlag from user where ID = ? AND  Password = ? ");
 	ps3.setString(1, ParameterBox.getuserID());
@@ -66,14 +63,13 @@
 	ResultSet rs6;//DistrictNameデータ
 
 	rs = ps.executeQuery();
-	rs2 = ps2.executeQuery();
 
 
 	// ログイン認証処理
-	while(rs.next() && rs2.next()){
+	while(rs.next()){
 		// userID,passwordが一致すればtrue
-		if( ParameterBox.getuserID().equals( rs.getString("ID"))&&
-				ParameterBox.getpassword().equals( rs2.getString("password"))){
+		if( ParameterBox.getuserID().equals(rs.getString("ID"))&&
+				ParameterBox.getpassword().equals(rs.getString("password"))){
 
 			flag=true;
 
@@ -99,38 +95,37 @@
 			rs4.close();
 			rs5.close();
 			rs6.close();
+			break;
 		}
 	}
 
-		if(flag){//idとpasswordが一致した場合
-			if(ParameterBox.getvoteflag().equals("X-XX")){//投票がまだの場合
-				%><script>	location.href = "vote.jsp";</script><%//投票用のページに移行
-			}else if(ParameterBox.getvoteflag().equals("0")) {//投票済みの場合
-				%> <script>
-						location.href = "login3.html";
-					</script><%
-			}else{//投票済みの場合
-				%> <script>
-						location.href = "login3.html";
-					</script><%
-			}
-		}else{
-			//idかpasswordが間違えている
-			%>
-			<script>
-			location.href = "login2.html";
-			</script> <%
-
+	if(flag){//idとpasswordが一致した場合
+		if(ParameterBox.getvoteflag().equals("X-XX")){//投票がまだの場合
+			%><script>	location.href = "vote.jsp";</script><%//投票用のページに移行
+		}else if(ParameterBox.getvoteflag().equals("0")) {//投票済みの場合
+			%> <script>
+					location.href = "login3.html";
+				</script><%
+		}else{//投票済みの場合
+			%> <script>
+					location.href = "login3.html";
+				</script><%
 		}
+	}else{
+		//idかpasswordが間違えている
+		%>
+		<script>
+		location.href = "login2.html";
+		</script> <%
+
+	}
 
 
 	ps.close();
-	ps2.close();
 	ps3.close();
 	ps4.close();
 	ps5.close();
 	rs.close();
-	rs2.close();
 
 
 	conn.close();

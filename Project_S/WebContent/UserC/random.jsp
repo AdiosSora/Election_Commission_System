@@ -153,7 +153,7 @@ try{	// 数値以外の場合の例外処理
 
 	//Connectionを閉じる
 	conn.close();
-}catch(Exception e){
+}catch(NumberFormatException e){
 	//Connectionを閉じる
 	conn.close();
 

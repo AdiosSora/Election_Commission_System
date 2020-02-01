@@ -52,11 +52,11 @@ String id = "";
 </head>
 <body>
 <div class="row" >
-<div class="col-4" style="text-align:center;padding:100px 0px 0px 0px;">
+<div class="col-2" style="text-align:center;padding:100px 0px 0px 0px;">
 	 <a class="" href="yes.jsp">投票結果</a><br>
 	 <a class="" href="statistics.jsp">投票統計</a>
 </div>
-<div class="col-6">
+<div class="col-10">
 	<form method= "POST" action="result.jsp">
 	<br>
 <div class="page-header">
@@ -87,7 +87,6 @@ String id = "";
 </div>
 </form>
 </div>
-<div class="col-2"></div>
 </div>
 </body>
 </html>
