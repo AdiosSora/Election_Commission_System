@@ -29,7 +29,7 @@
 	<br />
 	<div class="page-header animated infinite fadeInLeft">
 	    <h1 class="vote_titlebar animated infinite zoomInDown"> <%= ParameterBox.getDistrictName() %>　 <%= ParameterBox.getnickname() %> 様</h1>
-		<h2 class="vote_titlebar animated infinite zoomInDown">　第2020回　福岡市長選挙 </h2>
+		<h2 class="vote_titlebar animated infinite zoomInDown">　第2020回　<%= ParameterBox.getDistrictName() %>長選挙 </h2>
 	</div>
 	<br />
 	<div class="row">

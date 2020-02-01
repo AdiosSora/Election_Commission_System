@@ -40,7 +40,7 @@ ParameterBox.setVoteFlag_Decision(candidateid);
     <div class="body_scale">
         <div class="vertical">
             <div id="view_time"></div>
-            <h1 style="font-size: 36px">第2020回　福岡市長選挙</h1>
+            <h1 style="font-size: 36px">第2020回　<%= ParameterBox.getDistrictName() %>長選挙</h1>
             <br>
              <h3><%=ParameterBox.getDistrictName() %>　<%= ParameterBox.getnickname() %> 様</h3>
              <br>
@@ -71,7 +71,7 @@ ParameterBox.setVoteFlag_Decision(candidateid);
 	body {
 		position: relative;
 		top:0%;
-		background-color:#fefefe;
+		background-color:#FBFBFB;
 	}
     .body_scale{
         animation-name: Body_small;
@@ -106,7 +106,7 @@ ParameterBox.setVoteFlag_Decision(candidateid);
     	animation-name: Vote_thx_gif;
         animation-duration: 10s;
         animation-fill-mode: forwards;
-        top: 30%;
+        top: 6vw;
         left: 30%;
     	width:100%;
     	text-aligen:center;
@@ -118,12 +118,35 @@ ParameterBox.setVoteFlag_Decision(candidateid);
     	animation-name: Vote_thx_gif;
         animation-duration: 10s;
         animation-fill-mode: forwards;
-        top: 120%;
-        left: 48%;
+        top: 38vw;
+    	width:100%;
     	text-aligen:center;
     	z-index:1;
-    	font-size :50px;
+    	font-size :3vw;
+    	left: 38vw;
     }
+    @media screen and (min-width: 640px) {
+		.vote_thx_button{
+			left: 40vw;
+		}
+    }
+    @media screen and (min-width: 800px) {
+		.vote_thx_button{
+			left: 42vw;
+		}
+    }
+    @media screen and (min-width: 1200px) {
+		.vote_thx_button{
+			left: 45vw;
+		}
+    }
+    @media screen and (min-width: 1600px) {
+		.vote_thx_button{
+			left: 46vw;
+		}
+    }
+	@media screen and (orientation: landscape) {
+	}
 @keyframes Body_small{
 	0% {
         -webkit-transform: scale(1);

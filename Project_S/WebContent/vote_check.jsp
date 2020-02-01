@@ -61,7 +61,7 @@ ParameterBox.setVoteFlag_Decision(candidateid);
     <div class="vote_template">
         <div class="vertical">
             <div id="view_time"></div>
-            <h1 style="font-size: 36px">第2020回　福岡市長選挙</h1>
+            <h1 style="font-size: 36px">第2020回　<%= ParameterBox.getDistrictName() %>長選挙</h1>
             <br>
              <h3><%=ParameterBox.getDistrictName() %>　<%= ParameterBox.getnickname() %> 様</h3>
              <br>
