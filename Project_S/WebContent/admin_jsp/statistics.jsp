@@ -108,24 +108,30 @@ for(int sql_ready = 0; sql_ready < selectID.length; sql_ready++){
 <title>投票結果</title>
 </head>
 <body>
+<div class="row min_window" >
+	<img src="../image/Logo.png" width="80%">
+</div>
 <div class="row" >
-	<div class="col-2 admin_sidebar">
-	 <a class="" href="yes.jsp">投票結果</a><br>
-	 <a class="" href="statistics.jsp">投票統計</a>
+<div class="col-2 admin_sidebar">
+	<div class="Logo_admin">
+		<img src="../image/Logo.png" width="80%"><br>
+	</div>
+	 <a class="btn btn-outline-secondary btn-lg" href="yes.jsp">投票結果</a><br>
+	 <a class="btn btn-outline-secondary btn-lg" href="statistics.jsp">投票統計</a>
 	</div>
 	<div class="col-sm-10">
 
 		<div class="page-header">
 			<br>
-			<h2 style="border-bottom: 1px solid #eee;">選挙統計画面</h2>
+			<h1 style="border-bottom: 1px solid #eee;text-aligen:center;">選挙統計画面</h1>
 		</div>
-		<div class="chart-container" style="display: inline-block; height:225px; width:450px">
+		<div class="chart-container graph_shadow" style="display: inline-block; height:225px; width:450px">
 			<canvas id="doughnut" aria-label="Hello ARIA World" role="img"></canvas>
 		</div>
-		<div class="chart-container" style="display: inline-block; height:225px; width:450px">
+		<div class="chart-container graph_shadow" style="display: inline-block; height:225px; width:450px">
 			<canvas id="doughnut2" aria-label="Hello ARIA World" role="img"></canvas>
 		</div>
-		<div class="chart-container" style="display: inline-block; height:225px; width:450px">
+		<div class="chart-container graph_shadow" style="display: inline-block; height:225px; width:450px">
 			<canvas id="doughnut3" aria-label="Hello ARIA World" role="img"></canvas>
 		</div>
 	</div>

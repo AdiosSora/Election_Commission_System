@@ -46,15 +46,24 @@ rs = ps.executeQuery();
 <title>投票結果</title>
 </head>
 <body>
+<div class="row min_window" >
+	<img src="../image/Logo.png" width="80%">
+</div>
 <div class="row" >
-<div class="col-3"></div>
-<div class="col-6">
+<div class="col-2 admin_sidebar">
+	<div class="Logo_admin">
+		<img src="../image/Logo.png" width="80%"><br>
+	</div>
+	 <a class="btn btn-outline-secondary btn-lg" href="yes.jsp">投票結果</a><br>
+	 <a class="btn btn-outline-secondary btn-lg" href="statistics.jsp">投票統計</a>
+	</div>
+	<div class="col-sm-9">
 <br>
-<h2 style="border-bottom: 1px solid #eee;"><%
+<h1 style="border-bottom: 1px solid #eee;text-aligen:center;"><%
 //選択された１つのデータを取得
 if(rs.next()){
 	out.println(rs.getString("DistrictName") + "の集計");	// 「senkyokuNAME」を変更
-}%></h2><%
+}%></h1><%
 // 投票結果を取得,該当するテーブル、列に変更
 ps = conn.prepareStatement(
 		"select CandidateName as '候補者' , count(VoteFlag) as '獲得投票数', " +
@@ -101,7 +110,7 @@ int i = 0;
 				<%
 				// 選択した当選数分に「当選」
 				if(i < Integer.parseInt(request.getParameter("tosen"))){
-					%><td style="background:ffcdc7;">当選</td>
+					%><td style="color:red;">当選</td>
 				<% }else{
 					%><td>落選</td>
 				<%}
@@ -131,7 +140,7 @@ int i = 0;
 	</div>
 </form>
 </div>
-<div class="col-3"></div>
+<div class="col-sm-1"></div>
 </div>
 </body>
 </html>

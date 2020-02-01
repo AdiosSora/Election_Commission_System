@@ -51,16 +51,22 @@ String id = "";
 <title>投票結果</title>
 </head>
 <body>
+<div class="row min_window" >
+	<img src="../image/Logo.png" width="80%">
+</div>
 <div class="row" >
 <div class="col-2 admin_sidebar">
-	 <a class="" href="yes.jsp">投票結果</a><br>
-	 <a class="" href="statistics.jsp">投票統計</a>
-</div>
+	<div class="Logo_admin">
+		<img src="../image/Logo.png" width="80%"><br>
+	</div>
+	 <a class="btn btn-outline-secondary btn-lg" href="yes.jsp">投票結果</a><br>
+	 <a class="btn btn-outline-secondary btn-lg" href="statistics.jsp">投票統計</a>
+	</div>
 <div class="col-10">
 	<form method= "POST" action="result.jsp">
 	<br>
 <div class="page-header">
-	<h2 style="border-bottom: 1px solid #eee;">選挙管理画面</h2>
+	<h1 style="border-bottom: 1px solid #eee;">選挙管理画面</h1>
 </div>
 <div class="form-group">
 	選挙区/議席数を選択してください
