@@ -2,9 +2,13 @@
     pageEncoding="UTF-8"
     import="java.sql.*, javax.naming.*, javax.sql.*, java.text.*" %>
 <!-- <meta http-equiv="refresh" content="60" > -->
+<head>
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script type="text/javascript" src="https://github.com/nagix/chartjs-plugin-colorschemes/releases/download/v0.2.0/chartjs-plugin-colorschemes.min.js"></script>
+</head>
 <%
 // 受信したデータのエンコーディング(UTF-8)
 request.setCharacterEncoding("UTF-8");
@@ -260,7 +264,7 @@ for(int graph_ready = 0; graph_ready < selectID.length; graph_ready++){
 	          display: true,
 	            position: 'top',
 	            fontColor: '#333',
-	            text: ['<%=districtName[graph_ready]%> 投票率'],
+	            text: ['<%=districtName[graph_ready]%> 投票割合'],
 	            fontSize:'24',
 	        },
 	      	tooltips: {
@@ -277,26 +281,23 @@ for(int graph_ready = 0; graph_ready < selectID.length; graph_ready++){
 	%>
 	var ctx = document.getElementById('<%=graph_name%>');
 	var chart = new Chart(ctx, {
-		type:"doughnut",
+		type:"bar",
 		data:{
-			labels:[<%
-			        for(int vote_count = 0; vote_count < canditidate_name[graph_ready].length; vote_count ++){
-			        	if(canditidate_name[graph_ready][vote_count].equals("0")){
-
-			        	}else{
-			        	%>"<%=canditidate_name[graph_ready][vote_count]%>",<%
-			        	}
-					}%>],
+			labels:["18~29","30~39","40~49","50~59","60~69","70~79","80~89","90~99"],
 			datasets:[{
-				label:"1つ目のデータセット",
+				label:[],
 				data:[<%
-			        for(int vote_count = 0; vote_count < canditidate_vote_count[graph_ready].length; vote_count ++){
-			        	%>"<%=canditidate_vote_count[graph_ready][vote_count]%>",<%
-					}%>],
-				backgroundColor:["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)","rgb(144, 238, 144)",]
+				        for(int vote_count = 0; vote_count < user_age_vote_count[graph_ready][1].length; vote_count ++){
+				        	int num1 = user_age_vote_count[graph_ready][0][vote_count];
+				        	int num2 = user_age_vote_count[graph_ready][1][vote_count];
+				        	double num3 = Math.floor((double)num1/num2*100);
+				        	%>"<%=num3%>",<%
+						}%>],
+					backgroundColor:["#767F8B","#B3B7B8","#5C6068","#D3D3D3","#59A14F","#EDC948","#F5F5F5","#FF9DA7"]
 				}]
 		},
 	    options: {
+	    	responsive: true,
 	        title: {
 	          display: true,
 	            position: 'top',
@@ -306,8 +307,16 @@ for(int graph_ready = 0; graph_ready < selectID.length; graph_ready++){
 	        },
 	      	tooltips: {
 	            mode: 'nearest',
-	        }
-	    }
+	        },
+	        scales: {
+	        	yAxes: [{
+	        		ticks : {
+	        			min:0,
+	        			max:100
+	        		},
+	        	}],
+	        },
+	    },
 
 	}
 	);
