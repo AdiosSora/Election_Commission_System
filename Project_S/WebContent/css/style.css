@@ -259,7 +259,21 @@ a.cp_btn:hover {
 .graph_shadow{
 	-webkit-filter: drop-shadow(4px 4px 2px rgba(0,0,0,.2));
 }
-.sidebar_link{
+.sidebar_link {
+	display: block;
+	position: relative;
+	width: 100%;
+	padding: 0.8em;
 	margin:10px 0px;
-	font-size:24px;
+	text-align: center;
+	text-decoration: none;
+	color: #1B1B1B;
+	background: #fff;
+	border:1px solid #1B1B1B;
+}
+.sidebar_link:hover {
+	 background: #1B1B1B;
+         color: #fff;
+	 cursor: pointer;
+	 text-decoration: none;
 }
