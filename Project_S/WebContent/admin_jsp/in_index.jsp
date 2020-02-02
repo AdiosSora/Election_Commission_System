@@ -22,10 +22,12 @@
 	<div class="Logo_admin">
 		<img src="../image/Logo.png" width="80%"><br>
 	</div>
-	 <a class="sidebar_link" href="yes.jsp">投票結果</a><br>
-	 <a class="sidebar_link" href="statistics.jsp">投票統計</a><br>
-	 <a class="sidebar_link" href="statistics.jsp">プレビュー</a><br>
+	<div class="btn-group-vertical">
+		 <a class="btn btn-secondary" href="yes.jsp">投票結果</a><br>
+		 <a class="btn btn-secondary" href="statistics.jsp">投票統計</a><br>
+		 <a class="btn btn-secondary" href="in_index.jsp">プレビュー</a><br>
 	</div>
+</div>
 <div class="col-10">
 	<br>
 <div class="page-header">

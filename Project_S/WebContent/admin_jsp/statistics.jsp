@@ -116,8 +116,11 @@ for(int sql_ready = 0; sql_ready < selectID.length; sql_ready++){
 	<div class="Logo_admin">
 		<img src="../image/Logo.png" width="80%"><br>
 	</div>
-	 <a class="btn btn-outline-secondary btn-lg" href="yes.jsp">投票結果</a><br>
-	 <a class="btn btn-outline-secondary btn-lg" href="statistics.jsp">投票統計</a>
+	<div class="btn-group-vertical">
+		 <a class="btn btn-secondary" href="yes.jsp">投票結果</a><br>
+		 <a class="btn btn-secondary" href="statistics.jsp">投票統計</a><br>
+		 <a class="btn btn-secondary" href="in_index.jsp">プレビュー</a><br>
+	</div>
 	</div>
 	<div class="col-sm-10">
 
@@ -134,6 +137,7 @@ for(int sql_ready = 0; sql_ready < selectID.length; sql_ready++){
 		<div class="chart-container graph_shadow" style="display: inline-block; height:225px; width:450px">
 			<canvas id="doughnut3" aria-label="Hello ARIA World" role="img"></canvas>
 		</div>
+		<hr>
 	</div>
 </div>
 </body>
