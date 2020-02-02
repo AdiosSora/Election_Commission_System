@@ -27,6 +27,15 @@ String selectID[] = {"11111","22222","33333"};
 PreparedStatement ps = conn.prepareStatement("");
 ResultSet rs_Main[] = new ResultSet[5];
 ResultSet rs_Sub[] = new ResultSet[5];
+ResultSet vote_clear[] = new ResultSet[5];
+for(int sql_ready = 0; sql_ready < selectID.length; sql_ready++){
+	// SQL文を準備
+	ps = conn.prepareStatement(
+			"SELECT VoteFlag,Age FROM user where ConstituencyID=?  ;");	// 「senkyoku」,「senkyokuID」を変更
+	ps.setString(1, selectID[sql_ready]);
+	vote_clear[sql_ready] = ps.executeQuery();
+
+}
 for(int sql_ready = 0; sql_ready < selectID.length; sql_ready++){
 	// SQL文を準備
 	ps = conn.prepareStatement(
@@ -80,7 +89,17 @@ int i = 0;
 int k = 0;
 String[][] canditidate_name = {{"0","0","0","0","0"},{"0","0","0","0","0"},{"0","0","0","0","0"}};
 String[][] canditidate_vote_count = {{"0","0","0","0","0"},{"0","0","0","0","0"},{"0","0","0","0","0"}};
-
+int[][][] user_age_vote_count = {
+										{
+											{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0}
+										},
+										{
+											{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0}
+										},
+										{
+											{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0}
+										},
+									};
 for(int sql_ready = 0; sql_ready < selectID.length; sql_ready++){
 	k = 0;
 	while(rs_Main[sql_ready].next()){
@@ -98,6 +117,61 @@ for(int sql_ready = 0; sql_ready < selectID.length; sql_ready++){
 		}
 	}
 }
+for(int sql_ready = 0; sql_ready < selectID.length; sql_ready++){
+	k = 0;
+	while(vote_clear[sql_ready].next()){
+		int num = Integer.parseInt(vote_clear[sql_ready].getString("Age"));
+		if(num >= 18 && num <=29){
+			if(!(vote_clear[sql_ready].getString("VoteFlag").equals("X-XX"))){
+				user_age_vote_count[sql_ready][0][0]+=1;
+			}
+			user_age_vote_count[sql_ready][1][0]+=1 ;
+		}
+		if(num >= 30 && num <=39){
+			if(!(vote_clear[sql_ready].getString("VoteFlag").equals("X-XX"))){
+				user_age_vote_count[sql_ready][0][1]+=1;
+			}
+			user_age_vote_count[sql_ready][1][1]+=1 ;
+		}
+		if(num >= 40 && num <=49){
+			if(!(vote_clear[sql_ready].getString("VoteFlag").equals("X-XX"))){
+				user_age_vote_count[sql_ready][0][2]+=1;
+			}
+			user_age_vote_count[sql_ready][1][2]+=1 ;
+		}
+		if(num >= 50 && num <=59){
+			if(!(vote_clear[sql_ready].getString("VoteFlag").equals("X-XX"))){
+				user_age_vote_count[sql_ready][0][3]+=1;
+			}
+			user_age_vote_count[sql_ready][1][3]+=1 ;
+		}
+		if(num >= 60 && num <=69){
+			if(!(vote_clear[sql_ready].getString("VoteFlag").equals("X-XX"))){
+				user_age_vote_count[sql_ready][0][4]+=1;
+			}
+			user_age_vote_count[sql_ready][1][4]+=1 ;
+		}
+		if(num >= 70 && num <=79){
+			if(!(vote_clear[sql_ready].getString("VoteFlag").equals("X-XX"))){
+				user_age_vote_count[sql_ready][0][5]+=1;
+			}
+			user_age_vote_count[sql_ready][1][5]+=1 ;
+		}
+		if(num >= 80 && num <=89){
+			if(!(vote_clear[sql_ready].getString("VoteFlag").equals("X-XX"))){
+				user_age_vote_count[sql_ready][0][6]+=1;
+			}
+			user_age_vote_count[sql_ready][1][6]+=1 ;
+		}
+		if(num >= 90 && num <=99){
+			if(!(vote_clear[sql_ready].getString("VoteFlag").equals("X-XX"))){
+				user_age_vote_count[sql_ready][0][7]+=1;
+			}
+			user_age_vote_count[sql_ready][1][7]+=1 ;
+		}
+	}
+}
+
 
 %>
 
@@ -137,7 +211,16 @@ for(int sql_ready = 0; sql_ready < selectID.length; sql_ready++){
 		<div class="chart-container graph_shadow" style="display: inline-block; height:225px; width:450px">
 			<canvas id="doughnut3" aria-label="Hello ARIA World" role="img"></canvas>
 		</div>
-		<hr>
+		<hr class="style2"></hr>
+		<div class="chart-container graph_shadow" style="display: inline-block; height:225px; width:450px">
+			<canvas id="line" aria-label="Hello ARIA World" role="img"></canvas>
+		</div>
+		<div class="chart-container graph_shadow" style="display: inline-block; height:225px; width:450px">
+			<canvas id="line2" aria-label="Hello ARIA World" role="img"></canvas>
+		</div>
+		<div class="chart-container graph_shadow" style="display: inline-block; height:225px; width:450px">
+			<canvas id="line3" aria-label="Hello ARIA World" role="img"></canvas>
+		</div>
 	</div>
 </div>
 </body>
@@ -146,9 +229,51 @@ for(int sql_ready = 0; sql_ready < selectID.length; sql_ready++){
 <script type="text/javascript">
 <%
 String graph_name_list[] = {"doughnut","doughnut2","doughnut3"};
+String graph_name2_list[] = {"line","line2","line3"};
 String districtName[] = {"福岡市","久留米市","北九州市"};
 for(int graph_ready = 0; graph_ready < selectID.length; graph_ready++){
 	String graph_name = graph_name_list[graph_ready];
+	%>
+	var ctx = document.getElementById('<%=graph_name%>');
+	var chart = new Chart(ctx, {
+		type:"doughnut",
+		data:{
+			labels:[<%
+			        for(int vote_count = 0; vote_count < canditidate_name[graph_ready].length; vote_count ++){
+			        	if(canditidate_name[graph_ready][vote_count].equals("0")){
+
+			        	}else{
+			        	%>"<%=canditidate_name[graph_ready][vote_count]%>",<%
+			        	}
+					}%>],
+			datasets:[{
+				label:"1つ目のデータセット",
+				data:[<%
+			        for(int vote_count = 0; vote_count < canditidate_vote_count[graph_ready].length; vote_count ++){
+			        	%>"<%=canditidate_vote_count[graph_ready][vote_count]%>",<%
+					}%>],
+				backgroundColor:["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)","rgb(144, 238, 144)",]
+				}]
+		},
+	    options: {
+	        title: {
+	          display: true,
+	            position: 'top',
+	            fontColor: '#333',
+	            text: ['<%=districtName[graph_ready]%> 投票率'],
+	            fontSize:'24',
+	        },
+	      	tooltips: {
+	            mode: 'nearest',
+	        }
+	    }
+
+	}
+	);
+<%
+}
+for(int graph_ready = 0; graph_ready < selectID.length; graph_ready++){
+	String graph_name = graph_name2_list[graph_ready];
 	%>
 	var ctx = document.getElementById('<%=graph_name%>');
 	var chart = new Chart(ctx, {
