@@ -91,8 +91,8 @@ int i = 0;
 
 <%
 int k = 0;
-String[][] canditidate_name = {{"0","0","0","0","0"},{"0","0","0","0","0"},{"0","0","0","0","0"}};
-String[][] canditidate_vote_count = {{"0","0","0","0","0"},{"0","0","0","0","0"},{"0","0","0","0","0"}};
+String[][] canditidate_name = {{"0","0","0","0","0","0"},{"0","0","0","0","0","0"},{"0","0","0","0","0","0"}};
+String[][] canditidate_vote_count = {{"0","0","0","0","0","0"},{"0","0","0","0","0","0"},{"0","0","0","0","0","0"}};
 int[][][] user_age_vote_count = {
 										{
 											{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0}
@@ -225,6 +225,7 @@ for(int sql_ready = 0; sql_ready < selectID.length; sql_ready++){
 		<div class="chart-container graph_shadow" style="display: inline-block; height:225px; width:450px">
 			<canvas id="line3" aria-label="Hello ARIA World" role="img"></canvas>
 		</div>
+		<hr class="style2"></hr>
 	</div>
 </div>
 </body>
@@ -256,7 +257,7 @@ for(int graph_ready = 0; graph_ready < selectID.length; graph_ready++){
 			        for(int vote_count = 0; vote_count < canditidate_vote_count[graph_ready].length; vote_count ++){
 			        	%>"<%=canditidate_vote_count[graph_ready][vote_count]%>",<%
 					}%>],
-				backgroundColor:["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)","rgb(144, 238, 144)",]
+				backgroundColor:["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)","rgb(144, 238, 144)","#767F8B"]
 				}]
 		},
 	    options: {
@@ -293,11 +294,11 @@ for(int graph_ready = 0; graph_ready < selectID.length; graph_ready++){
 				        	double num3 = Math.floor((double)num1/num2*100);
 				        	%>"<%=num3%>",<%
 						}%>],
-					backgroundColor:["#767F8B","#B3B7B8","#5C6068","#D3D3D3","#59A14F","#EDC948","#F5F5F5","#FF9DA7"]
+					backgroundColor:["rgb(255, 99, 132, 0.6)","rgb(54, 162, 235, 0.6)","rgb(255, 205, 86, 0.6)",
+						"rgb(144, 238, 144, 0.6)","rgb(255, 255, 0, 0.6)","rgb(154, 205, 50, 0.6)","rgb(154, 205, 50, 0.5)","rgb(128, 0, 128, 0.6)"]
 				}]
 		},
 	    options: {
-	    	responsive: true,
 	        title: {
 	          display: true,
 	            position: 'top',

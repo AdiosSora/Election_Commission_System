@@ -131,7 +131,7 @@ int i = 0;
 				<% }else if(rs_Sub.getString("voteflag").equals("X-XX")){
 					%>未投票</td>
 					<td><%=rs_Sub.getString("count(voteflag)") %></td>
-					<td><%=rs_Sub.getString("投票率") %></td>
+					<td><%=rs_Sub.getString("投票率") %>%</td>
 				<% } %>
 				<td>----</td>
 		</tr><% } %>
