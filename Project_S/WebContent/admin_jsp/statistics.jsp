@@ -261,6 +261,12 @@ for(int graph_ready = 0; graph_ready < selectID.length; graph_ready++){
 				}]
 		},
 	    options: {
+	    	legend: {
+                display: true,
+                label:{
+                	fontSize :'24'
+                	}
+                },
 	        title: {
 	          display: true,
 	            position: 'top',
@@ -299,6 +305,9 @@ for(int graph_ready = 0; graph_ready < selectID.length; graph_ready++){
 				}]
 		},
 	    options: {
+	    	legend: {
+                display: false
+			},
 	        title: {
 	          display: true,
 	            position: 'top',
