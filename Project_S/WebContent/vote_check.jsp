@@ -57,7 +57,7 @@ ParameterBox.setVoteFlag_Decision(candidateid);
 <title></title>
 </head>
 <body class="fadeout">
-<form action="vote_complete.jsp">
+<form method="POST" action="vote_complete.jsp">
     <div class="vote_template">
         <div class="vertical">
             <div id="view_time"></div>

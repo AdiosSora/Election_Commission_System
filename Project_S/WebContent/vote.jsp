@@ -35,7 +35,7 @@
 	<div class="row">
 		<div class="col-sm"></div>
 		<div class="col-4-sm">
-			<form name="myform" action="vote_check.jsp">
+			<form method="POST" name="myform" action="vote_check.jsp">
 			<div>
 				<h3 class="element js-animation">　候補者を選択してください</h3>
 				<% String vflag;
