@@ -1,10 +1,5 @@
 
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
 create database election;
 use election;
 
@@ -14,7 +9,7 @@ CREATE TABLE `candidate` (
   `ConstituencyID` int(5) NOT NULL,
   `CandidateName` varchar(7) DEFAULT NULL,
   `Politicalparty` varchar(10) ,
-  `Profile` varchar(300) NOT NULL DEFAULT 'なし',
+  `Profile` varchar(300) ,
   `Imagepass` varchar(100) DEFAULT NULL
 );
 
@@ -37,7 +32,7 @@ INSERT INTO `candidate` (`CandidateID`, `ConstituencyID`, `CandidateName`, `Poli
 CREATE TABLE `constituency` (
   `ConstituencyID` int(5) NOT NULL,
   `DistrictName` varchar(10) DEFAULT NULL
-);
+)DEFAULT CHARSET=utf8;
 
 
 
@@ -55,7 +50,7 @@ CREATE TABLE `user` (
   `VoteFlag` varchar(5) DEFAULT 'X-XX',
   `nickname` varchar(100) DEFAULT NULL,
   `Age` int(3) NOT NULL DEFAULT 0
-);
+)DEFAULT CHARSET=utf8;
 
 --
 -- テーブルのデータのダンプ `user`
@@ -72,14 +67,14 @@ INSERT INTO `user` (`ID`, `Password`, `ConstituencyID`, `VoteFlag`, `nickname`, 
 ('8xOcMf', 'KI1u4a', 11111, 'X-09', '万丈 一道', 60),
 ('9llGe0', '0lLe12', 11111, '	X-09', '成神 健也', 39),
 ('9TAZjE', 'a62fv4', 11111, 'X-09', '五条 勝', 48),
-('a1', 'aaaaa', 11111, 'X-01', '津留﨑　宇宙', 67),
+('a1', 'aaaaa', 11111, 'X-01', '津留崎 宇宙', 67),
 ('A7ntsv', 'nj5ZjC', 11111, 'X-06', '少林寺 歩', 56),
 ('AeD5GG', '72nKyN', 33333, 'X-05', '砂木 沼治', 87),
 ('AiF1Sq', 'jvTzQc', 22222, 'X-02', '立向居 勇気', 76),
 ('AJx6t4', 'YTTcDI', 22222, 'X-04', '戸田 雄一郎', 75),
 ('aYw96E', 'EDdlbA', 11111, 'X-01', '豪炎寺 修也', 47),
 ('Az3OX9', 'XCd8nZ', 33333, 'X-05', '冬海 卓', 59),
-('b1', 'bbbbb', 22222, 'X-02', '岡崎　純也', 63),
+('b1', 'bbbbb', 22222, 'X-02', '岡崎 純也', 63),
 ('CQWIVv', 'q9hquB', 22222, 'X-04', '綱海 条介', 57),
 ('d18dhc', '3Ifx1v', 33333, 'X-05', '響木 正剛', 78),
 ('dxAy9X', 'SXUQ3c', 11111, 'X-01', '染岡 竜吾', 86),
