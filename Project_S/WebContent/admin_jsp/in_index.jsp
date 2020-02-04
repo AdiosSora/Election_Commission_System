@@ -34,7 +34,7 @@
 	<h1 style="border-bottom: 1px solid #eee;">選挙管理画面</h1>
 </div>
 <div>
-	<iframe src="../index.html" width="100%" height="100%"></iframe>
+	<iframe src="../index.html" width="80%" height="100%"></iframe>
 </div>
 </div>
 </div>

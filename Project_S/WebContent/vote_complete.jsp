@@ -33,6 +33,9 @@ ps.executeUpdate();
 //一時的に入力されたユーザID、パスワード、選挙区IDを保持する
 String candidateid =  request.getParameter("candidate_button");
 ParameterBox.setVoteFlag_Decision(candidateid);
+
+
+
 %>
 <title></title>
 </head>
@@ -64,7 +67,7 @@ ParameterBox.setVoteFlag_Decision(candidateid);
     	ご投票ありがとうございました
 </div>
     <div class="vote_thx_button">
-    	<a href="index.html" class="btn btn-secondary">トップページに戻る</a>
+    	<a href="index.jsp" class="btn btn-secondary">トップページに戻る</a>
     </div>
 
 <style>

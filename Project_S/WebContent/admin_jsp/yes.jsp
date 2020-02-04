@@ -66,11 +66,11 @@ String id = "";
 	</div>
 	</div>
 <div class="col-10">
-	<form method= "POST" action="result.jsp">
+	<form method= "POST" action="result.jsp" style="margin:0 20%">
 	<br>
-<div class="page-header">
-	<h1 style="border-bottom: 1px solid #eee;">選挙管理画面</h1>
-</div>
+	<div class="page-header">
+		<h1 style="border-bottom: 1px solid #eee;">選挙管理画面</h1>
+	</div>
 <div class="form-group">
 	選挙区/議席数を選択してください
 	<br><br>

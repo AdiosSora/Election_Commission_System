@@ -301,7 +301,7 @@ for(int graph_ready = 0; graph_ready < selectID.length; graph_ready++){
 				        	%>"<%=num3%>",<%
 						}%>],
 					backgroundColor:["rgb(255, 99, 132, 0.6)","rgb(54, 162, 235, 0.6)","rgb(255, 205, 86, 0.6)",
-						"rgb(144, 238, 144, 0.6)","rgb(255, 255, 0, 0.6)","rgb(154, 205, 50, 0.6)","rgb(154, 205, 50, 0.5)","rgb(128, 0, 128, 0.6)"]
+						"rgb(144, 238, 144, 0.6)","rgb(255, 255, 0, 0.6)","rgb(154, 205, 50, 0.6)","rgb(255, 140, 255, 0.6)","rgb(154, 205, 50, 0.5)"]
 				}]
 		},
 	    options: {
@@ -312,18 +312,30 @@ for(int graph_ready = 0; graph_ready < selectID.length; graph_ready++){
 	          display: true,
 	            position: 'top',
 	            fontColor: '#333',
-	            text: ['<%=districtName[graph_ready]%> 投票率'],
+	            text: ['　　　<%=districtName[graph_ready]%> 投票率'],
 	            fontSize:'24',
 	        },
 	      	tooltips: {
 	            mode: 'nearest',
 	        },
 	        scales: {
+	        	xAxes: [{
+                    scaleLabel: {              //軸ラベル設定
+                       display: true,          //表示設定
+                       labelString: '年代',  //ラベル
+                       fontSize: 24               //フォントサイズ
+                    },
+	        	}],
 	        	yAxes: [{
 	        		ticks : {
 	        			min:0,
 	        			max:100
 	        		},
+	        		scaleLabel: {                 //軸ラベル設定
+	                       display: true,             //表示設定
+	                       labelString: '投票率(%)',  //ラベル
+	                       fontSize: 24               //フォントサイズ
+	                 },
 	        	}],
 	        },
 	    },
