@@ -100,6 +100,13 @@
                市長選挙や町議会議員選挙など、様々な地域の選挙を簡単に投票できるようになっております。<br />ご利用は下部のログインページからご利用ください。
    		<br /><br /><br />
    	</div>
+	<div class="content_line2" style="background-color: #fefefe;padding:40px 0;">
+	</div>
+	<div class="content_line" style="background-color: #fff;">
+           <br />
+               <h1 class="parentheses">立候補者紹介</h1>
+	</div>
+
 
 </body>
 <script>

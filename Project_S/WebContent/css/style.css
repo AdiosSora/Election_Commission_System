@@ -161,7 +161,15 @@ body.fadeout::after {
     width: 100vw;
     padding: 0 10%;
     color: 111;
+	box-shadow: 10px 10px 10px rgba(0,0,0,0.6);
 }
+.content_line2 {
+    z-index: 2;
+    width: 100vw;
+    padding: 0 10%;
+    color: 111;
+}
+
 
 .parentheses{
   position: relative;
