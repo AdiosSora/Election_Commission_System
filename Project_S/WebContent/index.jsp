@@ -1,14 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    import = "java.sql.*, javax.naming.*, javax.sql.*,election.ParameterBox"%>
-<%
-	Connection conn = null;
+    import = "java.sql.*, javax.naming.*, javax.sql.*"%>
 
-	Class.forName("com.mysql.jdbc.Driver");
-
-	conn = DriverManager.getConnection("jdbc:mysql://localhost/election",//接続するDB
-									   "root", //ユーザ
-									   "kcsf" ); //パスワード
-	%>
 <!DOCTYPE>
 <html lang="ja">
   <head>
@@ -23,7 +15,7 @@
 
     <title>トップページ - ネット投票所</title>
 </head>
-<body class="fadeout">
+<body class="fadeout" style="background-color: #222;">
     <div class="row_top">
         <div class="relative" id="#bg01">
             <video playsinline autoplay muted loop source src="image/walking.mp4" type="video/mp4"></video>
@@ -100,14 +92,106 @@
                市長選挙や町議会議員選挙など、様々な地域の選挙を簡単に投票できるようになっております。<br />ご利用は下部のログインページからご利用ください。
    		<br /><br /><br />
    	</div>
-	<div class="content_line2" style="background-color: #fefefe;padding:40px 0;">
-	</div>
+   	<br /><br />
 	<div class="content_line" style="background-color: #fff;">
            <br />
                <h1 class="parentheses">立候補者紹介</h1>
+               <div class="sa sa--lr">
+					<table style="width:100%">
+					<tr><td rowspan="3"><img src="image/human_image/icon_01.png"></td><td style="font-size:32px; font-weight: bold;">向井 充</td></tr>
+					<tr><td style="font-size:24px; font-weight: bold;">java党</td></tr>
+					<tr><td>java党党首。強い出世意欲の持ち主。前職の保険業界の営業においては、同僚を強制的に担当する保険プランに加入させ、驚異の数字を叩き出してきた。<br>
+					掲げる公約は、現在の生活保護費をなくし、その財源で闇金融会社を設立することだ。</td></tr>
+					</table>
+				</div>
+				<div class="sa sa--rl">
+					<table style="width:100%;text-align:end;">
+					<tr><td style="font-size:32px; font-weight: bold;text-aligen:end;">蓮見 雅樹</td><td rowspan="3"><img src="image/human_image/icon_02.png"></td></tr>
+					<tr><td style="font-size:24px; font-weight: bold;text-aligen:end;">java党</td></tr>
+					<tr><td style="text-aligen:end;">血の気が多い性格。高速道路にて後ろの車に追い越された際には必ず、クラッシュするまで追跡をやめない。<br>
+					今までクラッシュさせてきた車はおよそ１０００台に上るといわれている。</td></tr>
+					</table>
+				</div>
+				<div class="sa sa--lr">
+					<table style="width:100%">
+					<tr><td rowspan="3"><img src="image/human_image/icon_11.png"></td><td style="font-size:32px; font-weight: bold;">石澤 千晴</td></tr>
+					<tr><td style="font-size:24px; font-weight: bold;">java党</td></tr>
+					<tr><td>表向きは穏便な性格。反面、夫には暴力的な言動を行い訴えられたこともある。だが、彼女にとっては暴力は愛情表現の一つでもあるのだ。<br>
+					大きな性格のギャップに魅了された市民は、今回のダークホースとして期待しているらしい。</td></tr>
+					</table>
+				</div>
+				<div class="sa sa--rl">
+					<table style="width:100%;text-align:end;">
+					<tr><td style="font-size:32px; font-weight: bold;text-aligen:end;">荻野 正幸</td><td rowspan="3"><img src="image/human_image/icon_04.png"></td></tr>
+					<tr><td style="font-size:24px; font-weight: bold;text-aligen:end;">java党</td></tr>
+					<tr><td style="text-aligen:end;">初めて台湾から日本にタピオカミルクティーを持ち帰り、昨今のタピオカブームをもたらした男。<br>
+					彼の先見の明はタピオカのみにはとどまらないだろう。掲げる公約はキャッサバの関税をなくすことだ。</td></tr>
+					</table>
+				</div>
+				<div class="sa sa--lr">
+					<table style="width:100%">
+					<tr><td rowspan="3"><img src="image/human_image/icon_13.png"></td><td style="font-size:32px; font-weight: bold;">服部 佳実</td></tr>
+					<tr><td style="font-size:24px; font-weight: bold;">python党</td></tr>
+					<tr><td>職場で冷静沈着な議員。どんな時でもクールでさわやかである。それの反動からか家庭では夫にぞっこんのようである。<br>
+					そう、デレデレなのである。</td></tr>
+					</table>
+				</div>
+				<div class="sa sa--rl">
+					<table style="width:100%;text-align:end;">
+					<tr><td style="font-size:32px; font-weight: bold;text-aligen:end;">岡部 咲子</td><td rowspan="3"><img src="image/human_image/icon_12.png"></td></tr>
+					<tr><td style="font-size:24px; font-weight: bold;text-aligen:end;">python党</td></tr>
+					<tr><td style="text-aligen:end;">java党党首に惹かれている。前職は探偵に勤めていたため、持ち前の技量で党首をストーカーすることは間違いないであろう。<br>掲げる公約は向井充との結婚である。</td></tr>
+					</table>
+				</div>
+				<div class="sa sa--lr">
+					<table style="width:100%">
+					<tr><td rowspan="3"><img src="image/human_image/icon_15.png"></td><td style="font-size:32px; font-weight: bold;">水樹 真明</td></tr>
+					<tr><td style="font-size:24px; font-weight: bold;">c+党</td></tr>
+					<tr><td>人情に厚い。学生時代においては、よく横断歩道を渡るおばあちゃんの荷物の持ち運びを手伝っていたらしい。<br>
+					そのため、遅刻することが多々あったようだ。掲げる公約は、’時間厳守’という言葉の廃絶である。</td></tr>
+					</table>
+				</div>
+				<div class="sa sa--rl">
+					<table style="width:100%;text-align:end;">
+					<tr><td style="font-size:32px; font-weight: bold;text-aligen:end;">向井 寛二</td><td rowspan="3"><img src="image/human_image/icon_06.png"></td></tr>
+					<tr><td style="font-size:24px; font-weight: bold;text-aligen:end;">c+党</td></tr>
+					<tr><td style="text-aligen:end;">充の弟。沖縄県が出身地ではあるが、父が北九州市への縁があるため、幼少期の頃から現在に至るまで北九州市で育つ。<br>
+					先日、家が火災に遭い悲しみに暮れていたが、自動販売機の下の部分から5円が出てきたことにより悲しみは吹っ切れたらしい。</td></tr>
+					</table>
+				</div>
+				<div class="sa sa--lr">
+					<table style="width:100%">
+					<tr><td rowspan="3"><img src="image/human_image/icon_07.png"></td><td style="font-size:32px; font-weight: bold;">島田 浩平</td></tr>
+					<tr><td style="font-size:24px; font-weight: bold;">c+党</td></tr>
+					<tr><td>２人兄弟の弟。よく近所のスーパーにて、洗剤と豆腐を万引きする。自身もそうだが、母、父、兄ともに万引きによって一度捕まっている。<br>
+					近隣住民によると一家は通称、「万引き家族」と呼ばれ親しまれている。公約は福岡市民へのベーシックインカム。</td></tr>
+					</table>
+				</div>
+				<div class="sa sa--rl">
+					<table style="width:100%;text-align:end;">
+					<tr><td style="font-size:32px; font-weight: bold;text-aligen:end;">中島 満</td><td rowspan="3"><img src="image/human_image/icon_08.png"></td></tr>
+					<tr><td style="font-size:24px; font-weight: bold;text-aligen:end;">c+党</td></tr>
+					<tr><td style="text-aligen:end;">以前はガス管理会社に勤めていたが、度重なる上司のパワハラにより退職を決意。退職後は、新たな仕事を探すも中々見つからない。<br>
+					何とか社会へ貢献したいという思いで一念発起し今回の市議会選に産声をあげた。掲げる公約はギャンブルによる配当金を2倍にすることだ。</td></tr>
+					</table>
+				</div>
+
+				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 	</div>
 
-
+<script>
+var scrollAnimationElm = document.querySelectorAll('.sa');
+var scrollAnimationFunc = function() {
+  for(var i = 0; i < scrollAnimationElm.length; i++) {
+    var triggerMargin = 300;
+    if (window.innerHeight > scrollAnimationElm[i].getBoundingClientRect().top + triggerMargin) {
+      scrollAnimationElm[i].classList.add('show');
+    }
+  }
+}
+window.addEventListener('load', scrollAnimationFunc);
+window.addEventListener('scroll', scrollAnimationFunc);
+</script>
 </body>
 <script>
 $(window).on('load', function(){
@@ -129,6 +213,3 @@ $(function() {
 });
 </script>
 </html>
-<%
-	conn.close();
-%>
