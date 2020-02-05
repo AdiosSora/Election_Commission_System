@@ -31,7 +31,7 @@
 <div class="col-10">
 	<br>
 <div class="page-header">
-	<h1 style="border-bottom: 1px solid #eee;">選挙管理画面</h1>
+	<h1 style="border-bottom: 1px solid #eee;">プレビュー/h1>
 </div>
 <div>
 	<iframe src="../index.html" width="80%" height="100%"></iframe>

@@ -183,9 +183,9 @@ for(int sql_ready = 0; sql_ready < selectID.length; sql_ready++){
 <html>
 <head>
 <meta charset="UTF-8">
-<title>投票結果</title>
+<title>投票統計</title>
 </head>
-<body>
+<body class="graph_shadow_body">
 <div class="row min_window" >
 	<img src="../image/Logo.png" width="80%">
 </div>
@@ -204,7 +204,7 @@ for(int sql_ready = 0; sql_ready < selectID.length; sql_ready++){
 
 		<div class="page-header">
 			<br>
-			<h1 style="border-bottom: 1px solid #eee;text-aligen:center;">選挙統計画面</h1>
+			<h1 style="border-bottom: 1px solid #eee;text-aligen:center;">選挙統計</h1>
 		</div>
 		<div class="chart-container graph_shadow" style="display: inline-block; height:225px; width:450px">
 			<canvas id="doughnut" aria-label="Hello ARIA World" role="img"></canvas>
