@@ -113,10 +113,10 @@ for(int sql_ready = 0; sql_ready < selectID.length; sql_ready++){
 	}
 	while(rs_Sub[sql_ready].next()){
 		if(!(rs_Sub[sql_ready].getString("voteflag").equals("0"))){
-			canditidate_name[sql_ready][k] = "該当者なし";
+			canditidate_name[sql_ready][k] = "未投票";
 			canditidate_vote_count[sql_ready][k] = rs_Sub[sql_ready].getString("count(voteflag)");
 		}else if(!(rs_Sub[sql_ready].getString("voteflag").equals("X-XX"))){
-			canditidate_name[sql_ready][k+1] = "未投票";
+			canditidate_name[sql_ready][k+1] = "該当者なし";
 			canditidate_vote_count[sql_ready][k+1] = rs_Sub[sql_ready].getString("count(voteflag)");
 		}
 	}
@@ -205,6 +205,9 @@ for(int sql_ready = 0; sql_ready < selectID.length; sql_ready++){
 		<div class="page-header">
 			<br>
 			<h1 style="border-bottom: 1px solid #eee;text-aligen:center;">選挙統計</h1>
+
+		 <a class="btn btn-secondary" href="user_sql/insert_user.jsp">UserInsert</a>　
+		 <a class="btn btn-secondary" href="user_sql/delete_user.jsp">UserDelete</a><br>
 		</div>
 		<div class="chart-container graph_shadow" style="display: inline-block; height:225px; width:450px">
 			<canvas id="doughnut" aria-label="Hello ARIA World" role="img"></canvas>
