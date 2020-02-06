@@ -38,7 +38,7 @@ ResultSet rs2;
 rs = ps.executeQuery();
 rs2 = ps2.executeQuery();
 while(rs.next()){
-	if(candidateid.equals("確認する")){
+	if(candidateid.equals("確認")){
 		%> <script>
 			location.href = "vote.jsp";
 		</script> <%

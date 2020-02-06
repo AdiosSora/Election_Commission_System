@@ -69,7 +69,7 @@
 			ps5.close();
 			conn.close();%>
 					<div class="element js-animation">
-						<input type="radio" name="candidate" value="0" id="0vote">
+						<input type="radio" name="candidate" value="0" id="0vote" checked="checked">
 						<label for="0vote" class="label_vote">
 							<table align="left" style="margin: 0 20px">
 								<tr>
