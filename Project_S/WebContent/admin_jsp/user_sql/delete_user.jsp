@@ -25,7 +25,7 @@ conn = DriverManager.getConnection(
 		);
 
 // SQL文を準備
-PreparedStatement ps = conn.prepareStatement("DELETE FROM user where Age != 99");
+PreparedStatement ps = conn.prepareStatement("DELETE FROM user where Age != 20");
 ps.executeUpdate();
 
 ps.close();
