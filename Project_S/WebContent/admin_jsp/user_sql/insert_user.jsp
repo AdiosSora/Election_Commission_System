@@ -42,7 +42,6 @@ PreparedStatement ps = conn.prepareStatement("INSERT INTO `user` (`ID`, `Passwor
 		"('AJx6t4', 'YTTcDI', 22222, 'X-04', '戸田 雄一郎', 75)," +
 		"('aYw96E', 'EDdlbA', 11111, 'X-01', '豪炎寺 修也', 47)," +
 		"('Az3OX9', 'XCd8nZ', 33333, 'X-05', '冬海 卓', 59)," +
-		"('b1', 'bbbbb', 22222, 'X-02', '岡崎 純也', 63)," +
 		"('CQWIVv', 'q9hquB', 22222, 'X-04', '綱海 条介', 57)," +
 		"('d18dhc', '3Ifx1v', 33333, 'X-05', '響木 正剛', 78)," +
 		"('dxAy9X', 'SXUQ3c', 11111, 'X-01', '染岡 竜吾', 86)," +
