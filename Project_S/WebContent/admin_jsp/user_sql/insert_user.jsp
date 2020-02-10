@@ -57,7 +57,7 @@ PreparedStatement ps = conn.prepareStatement("INSERT INTO `user` (`ID`, `Passwor
 		"('gD0NlM', 'RksqwK', 11111, 'X-01', '栗松 鉄平', 32)," +
 		"('IkMikl', 'ZCfScO', 33333, 'X-03', '円堂 大介', 34)," +
 		"('itwZan', '3X75gO', 11111, 'X-01', '闇野 カゲト', 65)," +
-		"('j7GdcI', 'c3pvk5', 22222, '0', '御堂 玲華', 20)," +
+		"('j7GdcI', 'c3pvk5', 22222, '0', '御堂 玲華', 21)," +
 		"('j8Wk82', 'k964mw', 11111, 'X-01', '円堂 守', 23)," +
 		"('KeEdPY', 'OFqsm8', 11111, 'X-01', '影野 仁', 38)," +
 		"('kxUz2S', 'lnTqjH', 33333, 'X-03', '久遠 道也', 43)," +
@@ -84,7 +84,7 @@ PreparedStatement ps = conn.prepareStatement("INSERT INTO `user` (`ID`, `Passwor
 		"('s3nFyY', 'hMSTTr', 11111, 'X-09', '神童 拓人', 42)," +
 		"('SOhVJY', 'a8AMzK', 33333, 'X-05', '宇都宮 虎丸', 32)," +
 		"('SVNCr1', 'E4EViO', 22222, 'X-07', '影田 巡', 48)," +
-		"('TLFR71', 'Mny1GB', 11111, 'X-XX', '松風 天馬', 20)," +
+		"('TLFR71', 'Mny1GB', 11111, 'X-XX', '松風 天馬', 21)," +
 		"('uBjOtl', 'rf5gzz', 22222, 'X-07', '浦部 リカ', 30)," +
 		"('uETewB', '4fKYAu', 33333, 'X-05', '飛鷹 征矢', 46)," +
 		"('Ugqrlp', 'UMBQtu', 11111, 'X-09', '西園 信助', 26)," +
