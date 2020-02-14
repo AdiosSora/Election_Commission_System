@@ -9,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/boostrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
 
     <title>トップページ - ネット投票所</title>
 </head>
@@ -89,7 +89,7 @@
            <br />
                <h1 class="parentheses">選挙管理委員会とは</h1>
            <br /><br />
-               市長選挙や町議会議員選挙など、様々な地域の選挙を簡単に投票できるようになっております。<br />ご利用は下部のログインページからご利用ください。
+               市長選挙や町議会議員選挙など、様々な地域の選挙を簡単に投票できるようになっております。<br />投票は上部の投票ボタンからご利用ください。
    		<br /><br /><br />
    	</div>
    	<br /><br />
