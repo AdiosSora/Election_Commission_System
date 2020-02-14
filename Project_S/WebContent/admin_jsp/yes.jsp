@@ -30,7 +30,7 @@ PreparedStatement ps1 = conn.prepareStatement(
 		"SELECT * FROM constituency");
 
 PreparedStatement ps2 = conn.prepareStatement(
-		"select constituencyID, count(constituencyID) as '総議席数' " +
+		"select count(constituencyID) as '総議席数' " +
 		"from candidate " +
 		"group by constituencyID; ");
 // SELECT文の結果を格納するオブジェクトを宣言
@@ -42,7 +42,7 @@ rs1 = ps1.executeQuery();
 rs2 = ps2.executeQuery();
 
 //
-String id = "";
+int tosen = 0;
 %>
 
 <html>
@@ -83,13 +83,20 @@ String id = "";
 			<%=rs1.getString("DistrictName") %></option>		<!-- 「senkyokuNAME」を変更 -->
 			<% } %>
 		</select><br />
-	<legend>当選議席数</legend>
+	<label>当選議席数:<br />
 		<select class="form-control" name="tosen">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
+			<%while(rs2.next()){
+				if(tosen < Integer.parseInt(rs2.getString("総議席数"))){
+					tosen = Integer.parseInt(rs2.getString("総議席数"));
+				}
+			}
+			for(int count=1 ; count < tosen ; count++){
+				%><option value="<%=count%>"><%=count%></option>
+			<% }
+			%>
+
 		</select>
+	</label>
 </div>
 <div>
 	<input type="submit" class="btn btn-primary" value="選択" />

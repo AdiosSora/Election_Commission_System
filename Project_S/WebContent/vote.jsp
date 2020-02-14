@@ -20,6 +20,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/boostrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/radio.css">
     <script src="js/jquery-3.3.1.slim.min.js"></script>
 
   	<link href="css/animate.css" rel="stylesheet">
