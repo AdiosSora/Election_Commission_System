@@ -32,9 +32,11 @@ String selectID = request.getParameter("senkyoku");
 ps.setString(1, selectID);
 
 // SELECT文の結果を格納するオブジェクトを宣言
+
 ResultSet rs;
 ResultSet rs_Main;
 ResultSet rs_Main2;
+ResultSet rs_Non;
 ResultSet rs_Sub;
 
 // SQL文の実行
@@ -48,27 +50,13 @@ rs = ps.executeQuery();
 <title>投票結果</title>
 </head>
 <body>
-<div class="row min_window" >
-	<img src="../image/Logo.png" width="80%">
-</div>
-<div class="row" >
-<div class="col-2 admin_sidebar">
-	<div class="Logo_admin">
-		<img src="../image/Logo.png" width="80%"><br>
-	</div>
-	<div class="btn-group-vertical">
-		 <a class="btn btn-secondary" href="yes.jsp">投票結果</a><br>
-		 <a class="btn btn-secondary" href="statistics.jsp">投票統計</a><br>
-		 <a class="btn btn-secondary" href="in_index.jsp">プレビュー</a><br>
-	</div>
-	</div>
-	<div class="col-sm-9">
-<br>
-<h1 style="border-bottom: 1px solid #eee;text-aligen:center;"><%
+<%
 //選択された１つのデータを取得
 if(rs.next()){
+	%><h1 style="border-bottom: 1px solid #eee;text-aligen:center;"><%
 	out.println(rs.getString("DistrictName") + "の集計");	// 「senkyokuNAME」を変更
-}%></h1><%
+	%></h1><%
+}
 // 投票結果を取得,該当するテーブル、列に変更
 ps = conn.prepareStatement(
 		"select CandidateName as '候補者' , count(VoteFlag) as '獲得投票数', " +
@@ -92,15 +80,19 @@ ps.setString(1, selectID);
 rs_Main2 = ps.executeQuery();
 
 int arrayInt[];
+// 1票以上の候補者
+String arSt[];
 int x=0;
 
 while(rs_Main2.next()){
 	x = Integer.parseInt(rs_Main2.getString("x"));
 }
 arrayInt = new int[x];
+arSt = new String[x];
 int t = 0;
 while(rs_Main.next()){
 	arrayInt[t]=Integer.parseInt(rs_Main.getString("獲得投票数"));
+	arSt[t]=rs_Main.getString("候補者");
 	t++;
 }
 
@@ -119,6 +111,66 @@ ps.setString(2, selectID);
 
 //SQL文の実行
 rs_Main = ps.executeQuery();
+
+
+// 投票数0の候補者を格納
+ps = conn.prepareStatement(
+		"select candidatename from candidate where constituencyid=? ;  ");
+ps.setString(1, selectID);
+
+//SQL文の実行
+rs_Non = ps.executeQuery();
+
+ps = conn.prepareStatement(
+		"select count(*) as x from candidate where constituencyid=? ;  ");
+ps.setString(1, selectID);
+
+//SQL文の実行
+rs_Main2 = ps.executeQuery();
+// 指定の候補者
+String arSt2[];
+int xx=0;
+
+while(rs_Main2.next()){
+	xx = Integer.parseInt(rs_Main2.getString("x"));
+}
+arSt2 = new String[xx];
+int tt = 0;
+while(rs_Non.next()){
+	arSt2[tt]=rs_Non.getString("candidatename");
+	tt++;
+}
+
+ps = conn.prepareStatement(
+		"select count(*) as x from candidate where constituencyid=? ;  ");
+ps.setString(1, selectID);
+
+//SQL文の実行
+rs_Main2 = ps.executeQuery();
+
+int xxx=0;
+while(rs_Main2.next()){
+	xxx = Integer.parseInt(rs_Main2.getString("x"));
+}
+
+// arSt3[]に０票の候補者を格納
+String arSt3[] = new String[xxx];
+int q=0;
+//if(arSt2.length != arSt.length){
+	for(int i=0; i < arSt2.length; i++){
+		int p=0;
+		for(int k=0; k < arSt.length; k++){
+			if(arSt2[i].equals(arSt[k])){
+				p++;
+				break;
+			}
+		}
+		if(p<1){
+			arSt3[q] = arSt2[i];
+			q++;
+		}
+	}
+//}
 
 // 該当者なし、未投票を集計
 ps = conn.prepareStatement(
@@ -148,9 +200,24 @@ int back = 0;
 // 判定変数 0:off, 1:on
 int judge = 0;
 %>
-
-<table border="1" class="table table-hover">
-		<tr bgcolor="#dddddd" text-aligen="">
+<div class="row min_window" >
+	<img src="../image/Logo.png" width="80%">
+</div>
+<div class="row" >
+<div class="col-2 admin_sidebar">
+	<div class="Logo_admin">
+		<img src="../image/Logo.png" width="80%"><br>
+	</div>
+	<div class="btn-group-vertical">
+		 <a class="btn btn-secondary" href="yes.jsp">投票結果</a><br>
+		 <a class="btn btn-secondary" href="statistics.jsp">投票統計</a><br>
+		 <a class="btn btn-secondary" href="in_index.jsp">プレビュー</a><br>
+	</div>
+	</div>
+	<div class="col-sm-9" style="padding:0 20%">
+<br>
+<table border="1" class="table table-hover" >
+		<tr>
 			<th>候補者</th><th>投票数</th><th>投票率</th><th>当選判定</th>
 		</tr>
 		<% while(rs_Main.next()){ %>
@@ -158,7 +225,7 @@ int judge = 0;
 			<td><%=rs_Main.getString("候補者") %></td>
 			<td><%=rs_Main.getString("獲得投票数") %></td>
 			<td><%=rs_Main.getString("投票率") %>%</td>
-
+			<td>
 				<%
 				// 選択した当選数分に「当選」
 				int kuji = 0;
@@ -166,11 +233,11 @@ int judge = 0;
 
 				if(arrayInt.length <= tosen){
 					// すべて当選の場合
-					%><td style="color:red;">当選</td>
+					%><p style="color:red;">当選</p></td>
 					<% back = 1;
 				 }else if(back == 2 || tosen < 1 && judge == 0){
 					// すでに当選議席数がない
-					%><td>落選</td>
+					%>落選</td>
 					<% back = 2;
 				}else if(i == arrayInt.length - 1){
 					// 立候補者の最下位の判定
@@ -184,7 +251,7 @@ int judge = 0;
 
 					if(tosen > kuji){
 						// 同票でも議席数内に収まる場合
-						%><td style="color:red;">当選</td>
+						%>当選</td>
 						<% back = 1;
 						tosen--;
 						num--;
@@ -209,7 +276,20 @@ int judge = 0;
 				i++;
 				%>
 		</tr><% } %>
-		<% while(rs_Sub.next()){ %>
+		<%
+		for(int z=0; z < arSt3.length ; z++){
+			if(arSt3[z] == null){
+				break;
+			}else{ %>
+				<td><%=arSt3[z] %></td>
+				<td>0</td>
+				<td>0.0%</td>
+				<td>落選</td>
+				<% back = 2;
+			}
+		}
+
+		while(rs_Sub.next()){ %>
 		<tr>
 			<td><%
 				// voteflagが「0」「X-XX」の判定]
@@ -225,10 +305,9 @@ int judge = 0;
 				<td>----</td>
 		</tr><% } %>
 </table>
-
 <form method= "POST" action="yes.jsp">
 	<div>
-		<input type="submit" value="戻る" />
+		<input class="btn btn-primary" type="submit" value="戻る" />
 	</div>
 </form>
 </div>
